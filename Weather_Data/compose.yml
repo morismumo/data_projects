@@ -1,21 +1,21 @@
-name: weather_project
-Services:
+version: '3.8'
+
+services:
   postgres:
     image: postgres:12-alpine
     container_name: weather_db
     restart: always
     ports:
-      -5432:5423
-    environment:
+      - "5432:5423"
+    env_file:
       - variables.env
     volumes:
-      - /home/mumo/dataprojects/Weather_Data/postgres-volume:/var/lib/postgres
+      - postgres-volume:/var/lib/postgresql/data
     networks:
       - weather_network
 
-  volumes:
-    /home/mumo/dataprojects/Weather_Data/postgres-volume:
-    external: true
-    
-  networks:
-    weather_network:
+volumes:
+  postgres-volume:
+
+networks:
+  weather_network:
