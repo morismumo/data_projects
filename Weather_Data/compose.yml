@@ -10,7 +10,7 @@ services:
     env_file:
       - variables.env
     volumes:
-      - postgres-volume:/var/lib/postgresql/data
+      - /home/mumo/dataprojects/Weather_Data/postgres-volume:/var/lib/postgresql/data
     networks:
       - weather_network
 

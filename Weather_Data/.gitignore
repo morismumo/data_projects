@@ -1,1 +1,4 @@
 nairobi_weather.json
+nairobi_weather.csv
+variables.env
+postgres-volume/
