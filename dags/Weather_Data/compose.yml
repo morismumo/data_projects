@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: weather_db
+    restart: always
+    ports:
+      - "5432:5432"
+    env_file:
+      - variables.env
+    volumes:
+      - ./home/mumo/dataprojects/dags/Weather_Data/project-volume:/var/lib/postgresql/data
+    networks:
+      - weather_db_net
+
+#for docker managed volume
+#volumes:
+#  postgres-volume:
+# to copy data from container to host direcrory docker cp weather_db:/var/lib/postgresql/data /path/to/host/directory
+# to copy data from host directory to container docker cp /path/to/host/directory weather_db:/path/to/container/directory
+
+networks:
+  weather_db_net:
