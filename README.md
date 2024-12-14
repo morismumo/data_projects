@@ -20,7 +20,9 @@ Setting the right Airflow user on linux
     $ echo -e "AIRFLOW_UID=$(id -u)" > .env
 
 **initialising the database**
+
     $ docker compose up airflow-init
 
 now lets run the docker-compose.yml to run airflow
+
     $ docker compose up -d
