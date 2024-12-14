@@ -26,3 +26,8 @@ Setting the right Airflow user on linux
 now lets run the docker-compose.yml to run airflow
 
     $ docker compose up -d
+
+if successful you should see 5 docker containers running;
+
+    $ docker ps
+    airflow scheduler, webserver, worker, triggereer, redis, and postgres containers
