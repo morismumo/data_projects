@@ -9,6 +9,7 @@ services:
       - variables.env
     volumes:
       - ./home/mumo/dataprojects/dags/Healthcare_Data/project-volume:/var/lib/postgresql/data
+      - ./home/mumo/dataprojects/dags/Healthcare_Data/init_db.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - health_db_net
 
