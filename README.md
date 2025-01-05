@@ -7,27 +7,21 @@
 
     "Tell me and I forget. Teach me and I remember. Involve me and I learn." - Richard Branson
 
-To run any of the projects we need to run an airflow instance
+To run any of the projects we need to run our airflow instance in docker.
+Clone this directory to your local environment with the following command:
 
-    $ curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.3/docker-compose.yaml'
-    -- change the yaml file where load examples is true to false
+    $ git clone <repository_url>
 
-This assumes that docker is already running on your development setup
+Navigate to the project directory where there is a Dockerfile
 
-Setting the right Airflow user on linux
+    $ docker compose build && docker compose up -d
 
-    $ mkdir -p ./dags ./logs ./plugins ./config
-    $ echo -e "AIRFLOW_UID=$(id -u)" > .env
+This assumes that docker is already installed and a docker daemon is running on your development setup!
 
-**initialising the database**
-
-    $ docker compose up airflow-init
-
-now lets run the docker-compose.yml to run airflow
-
-    $ docker compose up -d
-
-if successful you should see 5 docker containers running;
+if successful you should see 3 docker containers running;
 
     $ docker ps
-    airflow scheduler, webserver, worker, triggereer, redis, and postgres containers
+
+An airflow scheduler, a webserver, and a postgres container
+
+The airflow webserver is available on localhost:8080 

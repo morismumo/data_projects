@@ -1,6 +1,4 @@
 FROM apache/airflow:2.10.3
-WORKDIR /home/mumo/dataprojects
-COPY dags/Healthcare_Data .
-ENV FILE .env
+ADD requirements.txt .
 RUN pip install --upgrade pip
-RUN pip install python-dotenv pendulum
+RUN pip install apache-airflow==${AIRFLOW_VERSION} -r requirements.txt

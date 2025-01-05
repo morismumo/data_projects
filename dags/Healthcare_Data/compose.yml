@@ -1,23 +1,17 @@
 services:
-  postgres:
+  db_02:
     image: postgres:13
-    container_name: health_db
     restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=healthdb
     ports:
-      - "5432:5432"
-    env_file:
-      - variables.env
-    volumes:
-      - ./home/mumo/dataprojects/dags/Healthcare_Data/project-volume:/var/lib/postgresql/data
-      - ./home/mumo/dataprojects/dags/Healthcare_Data/init_db.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - health_db_net
-
-#for docker managed volume
-#volumes:
-#  postgres-volume:
-# to copy data from container to host direcrory docker cp weather_db:/var/lib/postgresql/data /path/to/host/directory
-# to copy data from host directory to container docker cp /path/to/host/directory weather_db:/path/to/container/directory
-
-networks:
-  health_db_net:
+      - '5434:5432'
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+    volumes: 
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:
+    driver: local
