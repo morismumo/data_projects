@@ -83,7 +83,7 @@ def insert_data():
   conn.commit()
 
 with DAG(
-    dag_id='Extract_Load_to_Postgres_db',
+    dag_id='Healthcare_data_to_Postgres',
     start_date=datetime(2024, 12, 17),
     description='run a dag that pulls data from a data source api, and uploads it to a postgres container',
     schedule_interval=None,
