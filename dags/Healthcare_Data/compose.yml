@@ -2,10 +2,8 @@ services:
   db_02:
     image: postgres:13
     restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=healthdb
+    env_file:
+      - .env 
     ports:
       - '5434:5432'
     extra_hosts:

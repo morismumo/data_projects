@@ -21,6 +21,8 @@ def fetch_data():
 def insert_data():
   hook = PostgresHook(postgres_conn_id='postgres')
   #postgres_url = 'postgres://postgres:postgres@host.docker.internal:5434/healthdb'
+  #postgres_conn_id is defined in the airflow connection UI
+
   conn = hook.get_conn()
   mydata = fetch_data()
   with conn.cursor() as cur:
@@ -88,13 +90,6 @@ with DAG(
     description='run a dag that pulls data from a data source api, and uploads it to a postgres container',
     schedule_interval=None,
 ) as dag:
-
-    # # Start Postgres container if not up already
-    # start_postgres = BashOperator(
-    # task_id='start_postgres',
-    # bash_command='docker compose -f ./dags/Healthcare_Data/compose.yml up -d && sleep 30',
-    # dag=dag,
-    # )
 
     # Extract data from our source
     extract_data = PythonOperator(
