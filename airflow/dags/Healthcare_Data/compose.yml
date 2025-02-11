@@ -1,6 +1,7 @@
 services:
   postgres:
     image: postgres:13
+    container_name: postgres_health
     restart: always
     env_file:
       - .env 

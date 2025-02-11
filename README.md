@@ -34,3 +34,6 @@ An airflow scheduler, a webserver, and a postgres container
 The airflow webserver is available on localhost:8080 admin:airflow password:airflow
 
 Each dag in ./airflow/dags directory will have its own README to be able to run the dag successfully
+
+**Dags' README files list:**
+1. [Healthcare_Data](/airflow/dags/Healthcare_Data/README.md)

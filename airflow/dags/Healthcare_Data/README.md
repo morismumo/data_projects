@@ -1,16 +1,26 @@
-To run this dag successfully, you need to first run the compose.yml file in dags/Healthcare_Data/compose.yml.
+
+**We first initialise airflow, use this guide;**
+
+**Step 1:** [Run Airflow Docker Compose](/README.md)
+
+After a successful airflow run, all the dags should be visible in the Airflow UI
+![Airflow UI Dags](./screenshots/healthcare_data_dag.png "Dags List")
+
+**Step 2:** But before you run this **Healthcare_data_to_postgres** dag, you need start two containers that will be used in our dag.
+Navigate to this compose.yml file in airflow/dags/Healthcare_Data/compose.yml and run;
 
     $ docker compose up -d
 
 This will initiate our postgres and metabase containers for this project.
-To check if the postgres database is running and accepting connection
+
+**Step 3:** To check if the postgres database is running and accepting connection
 
     $ docker ps
-    -- check if the container is running: name ending with db_02
+    -- check if the container name **postgres_health** exists
     $ docker logs <container id>
     -- look for LOG: database system is ready to accept connections
 
-but first we need to test our postgres database connection in airflow UI connections before running our dag
+**Step 4:** Next we need to test our postgres database connection in airflow UI connections before running our dag
 
     1. connection ID : postgres
     2. host : 172.17.0.1
@@ -27,7 +37,7 @@ save the connection if successfull
 ![Airflow UI Connection](./screenshots/saved_postgres.png "Testing Airflow UI Connection")
 
 
-You can now run the dag from airflow UI dags list
+**Step 5:** You can now run the dag from airflow UI dags list
     
 **Healthcare_data_to_Postgres**
 
