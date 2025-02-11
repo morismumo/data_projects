@@ -19,7 +19,7 @@ def fetch_data():
 
 # Function to insert data into a db
 def insert_data():
-  hook = PostgresHook(postgres_conn_id='postgres')
+  hook = PostgresHook(postgres_conn_id='postgres_healthcare_db')
   #postgres_url = 'postgres://postgres:postgres@host.docker.internal:5434/healthdb'
   #postgres_conn_id is defined in the airflow connection UI
 

@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:13
+    restart: always
+    env_file:
+      - .env 
+    ports:
+      - '5434:5432'
+    volumes: 
+      - /home/mumo/volumes/db_data:/var/lib/postgresql/data
+    networks:
+      - health_net
+
+  metabase:
+    image: metabase/metabase:latest
+    restart: always
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    networks:
+      - health_net
+
+networks:
+  health_net:
+    driver: bridge
+
